@@ -1,0 +1,37 @@
+<h3>Update Employee</h3>
+<div style="width: 400px;">
+  <form  #updateEmployeeForm ="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Employee Name</label>
+      <input type="text" class="form-control" required minlength="4" id="name" [(ngModel)]="employee.name" name="name" #name="ngModel"  >
+      <small *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger p-1 ml-1">Name required, Name must be at least 4 characters long</small>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Email</label>
+      <input type="text" class="form-control" id="email" required [(ngModel)]="employee.email" email name="email" #email="ngModel">
+      <small class="form-text text-muted" *ngIf="email.invalid && email.touched" class="alert alert-danger p-1 ml-1">Please enter email address. For Ex. (example@gmail.com)</small>
+    </div>
+
+    <div class="form-group">
+      <label for="name">mobile</label>
+      <input type="text" class="form-control" id="mobile" [(ngModel)]="employee.mobile" name="mobile" #mobile="ngModel" required minlength="10" maxlength="10" pattern="^((\\+91-?)|0)?[0-9]{10}$">
+      <small *ngIf="mobile.invalid && mobile.touched" class="alert alert-danger p-1 ml-1">Enter mobile number, exact 10 digits</small>
+    </div>
+
+    <div class="form-group">
+      <label for="name">salary</label>
+      <input type="number" class="form-control" id="salary" [(ngModel)]="employee.salary" name="salary" #salary="ngModel" required >
+      <small *ngIf="salary.invalid && salary.touched" class="alert alert-danger p-1 ml-1">Enter salary.</small>
+    </div>
+
+    <div class="form-group">
+      <label for="name">department</label>
+      <input type="text" class="form-control" id="department" [(ngModel)]="employee.department" name="department" #department="ngModel" required>
+      <small *ngIf="department.invalid && department.touched" class="alert alert-danger p-1 ml-1">Enter department.</small>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!updateEmployeeForm.valid">Submit</button>
+  </form>
+</div>
+
